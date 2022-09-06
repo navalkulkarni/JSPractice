@@ -2,7 +2,9 @@
 
 console.log('liver srver demo');
 
+const secretNumber = Math.trunc(Math.random() * 20)+ 1;
 
+document.querySelector('.number').textContent = secretNumber;
 
 const checkFunction = function checkNumber(event)
 {
