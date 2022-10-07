@@ -15,6 +15,15 @@ const checkFunction = function checkNumber(event)
   if(!guessValue){
     document.querySelector('.message').textContent = '🛑 No Number !';
   }
+  else if( guessValue === secretNumber){
+    document.querySelector('.message').textContent = '🥳 Correct Guess';
+  }
+  else if( guessValue < secretNumber){
+    document.querySelector('.message').textContent = 'Too Low 📉';
+  }
+  else if( guessValue > secretNumber){
+    document.querySelector('.message').textContent = 'Too High 📈';
+  }
 
 }
 
