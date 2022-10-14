@@ -2,9 +2,9 @@
 
 console.log('liver server demo');
 
-const secretNumber = Math.trunc(Math.random() * 20)+ 1;
+let secretNumber = Math.trunc(Math.random() * 20)+ 1;
 
-document.querySelector('.number').textContent = secretNumber;
+
 
 let score = 10;
 document.querySelector('.score').textContent = score;
@@ -19,6 +19,7 @@ const checkFunction = function checkNumber(event)
   }
   else if( guessValue === secretNumber){
     document.querySelector('.message').textContent = '🥳 Correct Guess';
+    document.querySelector('.number').textContent = secretNumber;
     score = score +1 ;
     document.querySelector('.score').textContent = score;
     document.querySelector('.number').textContent = secretNumber;
@@ -52,4 +53,15 @@ const checkFunction = function checkNumber(event)
 }
 
 //document.querySelector('.check').addEventListener('click', checkFunction);
+
+const resetGame = function resetGame(event) {
+ console.log('inside reset game func');
+  secretNumber = Math.trunc(Math.random() * 20)+ 1;
+  score = 10;
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.message').textContent = 'Start Guessing...';
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+}
 
