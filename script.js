@@ -1,11 +1,13 @@
 'use strict';
 
-console.log('liver srver demo');
+console.log('liver server demo');
 
 const secretNumber = Math.trunc(Math.random() * 20)+ 1;
 
 document.querySelector('.number').textContent = secretNumber;
 
+let score = 10;
+document.querySelector('.score').textContent = score;
 const checkFunction = function checkNumber(event)
 {
   console.log('in check number'+document.querySelector('.guess').value);
@@ -17,15 +19,37 @@ const checkFunction = function checkNumber(event)
   }
   else if( guessValue === secretNumber){
     document.querySelector('.message').textContent = '🥳 Correct Guess';
+    score = score +1 ;
+    document.querySelector('.score').textContent = score;
+    document.querySelector('.number').textContent = secretNumber;
+    document.querySelector('body').style.backgroundColor = '#60b347';
   }
   else if( guessValue < secretNumber){
-    document.querySelector('.message').textContent = 'Too Low 📉';
+    if(score>0){
+      document.querySelector('.message').textContent = 'Too Low 📉';
+      score = score -1;
+      document.querySelector('.score').textContent = score;
+    }else{
+      document.querySelector('.message').textContent = ' 😥 Sorry you lost the game, Try Again';
+      score = 0;
+      document.querySelector('.score').textContent = score;
+    }
+    
   }
   else if( guessValue > secretNumber){
-    document.querySelector('.message').textContent = 'Too High 📈';
+    if(score>0){
+      document.querySelector('.message').textContent = 'Too High 📈';
+      score = score -1;
+      document.querySelector('.score').textContent = score;
+    }else{
+      document.querySelector('.message').textContent = ' 😥 Sorry you lost the game, Try Again';
+      score = 0;
+      document.querySelector('.score').textContent = score;
+    }
+    
   }
 
 }
 
-document.querySelector('.check').addEventListener('click', checkFunction);
+//document.querySelector('.check').addEventListener('click', checkFunction);
 
