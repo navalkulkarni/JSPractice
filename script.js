@@ -8,6 +8,7 @@ let highScore = 0;
 
 let score = 10;
 document.querySelector('.score').textContent = score;
+
 const checkFunction = function checkNumber(event)
 {
   console.log('in check number'+document.querySelector('.guess').value);
@@ -45,7 +46,7 @@ const checkFunction = function checkNumber(event)
 //document.querySelector('.check').addEventListener('click', checkFunction);
 
 const resetGame = function resetGame(event) {
- console.log('inside reset game func');
+ console.log('inside reset game func'+event);
   secretNumber = Math.trunc(Math.random() * 20)+ 1;
   score = 10;
   highScore = 0;
@@ -56,3 +57,16 @@ const resetGame = function resetGame(event) {
   document.querySelector('body').style.backgroundColor = '#222';
 }
 
+const showModal = function(event){
+  console.log('in show modal');
+
+  document.querySelector('.modal').classList.remove('hidden');
+}
+
+const closeModal = function(event){
+  console.log('in close modal');
+  resetGame();
+  document.querySelector('.modal').classList.add('hidden');
+}
+
+document.querySelector('.close').addEventListener('click',closeModal);

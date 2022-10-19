@@ -27,8 +27,20 @@
         <p class="label-highscore">
           🥇 Highscore: <span class="highscore">0</span>
         </p>
+        <button style="margin-top: 2%;" class="btn check" onclick="showModal()">Close</button>
       </section>
+
     </main>
+    <div class="modal hidden">
+      <div class="container">
+        <p>Are you sure you want to close the Game?</p>
+      </div>
+      <div class="container game-close">
+        <button class="btn close">Yes</button>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
+
     <script src="script.js"></script>
   </body>
 
