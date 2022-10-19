@@ -4,7 +4,7 @@ console.log('liver server demo');
 
 let secretNumber = Math.trunc(Math.random() * 20)+ 1;
 
-
+let highScore = 0;
 
 let score = 10;
 document.querySelector('.score').textContent = score;
@@ -21,13 +21,15 @@ const checkFunction = function checkNumber(event)
     document.querySelector('.message').textContent = '🥳 Correct Guess';
     document.querySelector('.number').textContent = secretNumber;
     score = score +1 ;
+    highScore = score> highScore ? score : highScore;
     document.querySelector('.score').textContent = score;
     document.querySelector('.number').textContent = secretNumber;
+    document.querySelector('.highscore').textContent = highScore;
     document.querySelector('body').style.backgroundColor = '#60b347';
   }
-  else if( guessValue < secretNumber){
+  else if( guessValue !== secretNumber){
     if(score>0){
-      document.querySelector('.message').textContent = 'Too Low 📉';
+      document.querySelector('.message').textContent = guessValue > secretNumber ? 'Too High 📈' : 'Too Low 📉';
       score = score -1;
       document.querySelector('.score').textContent = score;
     }else{
@@ -37,19 +39,7 @@ const checkFunction = function checkNumber(event)
     }
     
   }
-  else if( guessValue > secretNumber){
-    if(score>0){
-      document.querySelector('.message').textContent = 'Too High 📈';
-      score = score -1;
-      document.querySelector('.score').textContent = score;
-    }else{
-      document.querySelector('.message').textContent = ' 😥 Sorry you lost the game, Try Again';
-      score = 0;
-      document.querySelector('.score').textContent = score;
-    }
-    
-  }
-
+  
 }
 
 //document.querySelector('.check').addEventListener('click', checkFunction);
@@ -58,6 +48,7 @@ const resetGame = function resetGame(event) {
  console.log('inside reset game func');
   secretNumber = Math.trunc(Math.random() * 20)+ 1;
   score = 10;
+  highScore = 0;
   document.querySelector('.score').textContent = score;
   document.querySelector('.number').textContent = '?';
   document.querySelector('.message').textContent = 'Start Guessing...';
